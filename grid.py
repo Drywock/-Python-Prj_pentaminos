@@ -1,3 +1,10 @@
+from pentamino import cPentamino
+
 class cGrid():
+
     def __init__(self,hauteur):
-        pass
+        self.hauteur=hauteur
+        self.largeur=60/hauteur
+
+    def controlPentamino(pentamino)
+        raw
