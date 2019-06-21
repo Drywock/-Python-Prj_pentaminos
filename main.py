@@ -1,17 +1,19 @@
 from pentamino import cPentamino
+from matrice import cMatrice
 from grid import cGrid
 
 
-def initGrille():
-    lColumnNames = ['A','B','C','D','E','F','G','H','I','J','K','L']
-    nbRows = 60/len(lColumnNames)
+def testPentamino(pentamino,grid,matrice):
+    # for each position in grid test if the pentamino fit in
+        #for each position in grid
+            #for each symetrie/rotation of the pentamino
+                # if fit in add the corresponding raw to matrice
+    pass
 
-    grid = cGrid()
-
-    for columnName in lColumnNames:
-        grid.addColumn(columnName)
-
-    for row in range(nbRows):
-        grid.addRow()
+def solve():
+    matrice=cMatrice()
+    grid=cGrid(4)
+    lpentaminos=[]
     
-    return grid
+    for pentamino in lpentaminos:
+        testPentamino(pentamino,grid,matrice)
