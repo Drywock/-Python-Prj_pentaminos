@@ -1,4 +1,4 @@
-class cPentamino:
+class cPentamino():
 
     def __init__(self,symbole):
         self.symoble = symbole

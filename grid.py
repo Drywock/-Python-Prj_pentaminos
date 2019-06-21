@@ -1,33 +1,45 @@
-class cGrid:
+from column import cColumn
+from case import cCase
 
-    def __init__(self,hauteur):
-        self.cases= []
-        
-        if(60%hauteur == 0):
-            self.hauteur=hauteur
-            self.largeur=60/hauteur
-
-            for y in range(self.hauteur):
-                self.cases.append([])
-                for x in range(self.largeur):
-                    self.cases[y].append('X')
+class cGrid():
+    def __init__(self):
+        self.left=self
+        self.right=self
     
     def __repr__(self):
-        output_str = 'Grid : \n' + "*"*(2+self.largeur) +'\n'
-
-        for y in range(0,self.hauteur):
-            output_str += '*'
-
-            for x in range(self.largeur):
-                output_str+=self.cases[y][x]
-
-            output_str += '*\n'
-
-        output_str += "*"*(2+self.largeur)
+        output_str = 'Grid : \n'
         return output_str
+
+    def countColumn(self):
+        cpt=0
+        x=self
+        while(x.right!=self):
+            x=x.right
+            cpt+=1
+
+        return cpt
+
+    def addColumn(self,name):
+        x=self.left
+        newColumn = cColumn(name)
+        newColumn.left=x.left
+        newColumn.right=x
+        x.left=newColumn
+
+    def addRow(self):
+        x=self
+        while(x.right != self):
+            x=x.right
+            newCase = cCase()
+            newCase.up = x.up
+            newCase.down = x
+            x.up=newCase
+
+            if(x.left!=self):
+                newCase.left=x.left.up
+                x.left.up.right=newCase
+            
+            newCase.column=x
 
     def show(self):
         print self
-
-grid=cGrid(3)
-grid.show()
